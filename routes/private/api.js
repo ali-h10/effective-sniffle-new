@@ -172,6 +172,130 @@ app.get("/menuItem/truck/:truckId/category/:category", async (req, res) => {
 });
 
 
+app.post('/api/v1/menuItem/new' ,  async (req, res)  => {
+  try {
+    // 1️⃣ Get logged-in user (from session cookie)
+    const user = await getUser(req);
+
+    // Ensure the user is a truck owner
+    if (!user || user.role !== "truckOwner") {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+    // 2️⃣ Owner must have a truck (your getUser already merges truck info)
+    const truckId = user.truckId;
+
+    if (!truckId) {
+      return res.status(400).json({
+        message: "Truck owner does not have a truck assigned",
+      });
+    }
+
+    // 3️⃣ Extract fields from request body
+    const { name, price, description, category } = req.body;
+
+    // Validation
+    if (!name || !price || !category) {
+      return res.status(400).json({
+        message: "name, price, and category are required",
+      });
+    }
+
+    // 4️⃣ Insert new record into MenuItems (status & createdAt use defaults)
+    const [createdItem] = await db("FoodTruck.MenuItems")
+      .insert({
+        truckId,
+        name,
+        price,
+        description,
+        category,
+      })
+      .returning("*");
+
+    // 5️⃣ Send success message
+    return res.status(201).json({
+      message: "menu item was created successfully",
+      item: createdItem,
+    });
+  } catch (err) {
+    console.error("Error creating menu item:", err);
+    return res.status(500).json({
+      message: "Server error",
+      error: err.message,
+    });
+  }
+});
+
+app.put('/api/v1/menuItem/edit/:itemId', async (req, res) => {
+  try {
+    // 1️⃣ Get logged-in user
+    const user = await getUser(req);
+
+    if (!user || user.role !== "truckOwner") {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+    const truckId = user.truckId;
+
+    if (!truckId) {
+      return res.status(400).json({
+        message: "Truck owner does not have a truck assigned",
+      });
+    }
+
+    // 2️⃣ Extract itemId from params
+    const itemId = req.params.itemId;
+
+    // 3️⃣ Check if the menu item exists AND belongs to this truck
+    const item = await db("FoodTruck.MenuItems")
+      .where({ itemId })
+      .first();
+
+    if (!item) {
+      return res.status(404).json({ message: "Menu item not found" });
+    }
+
+    if (item.truckId !== truckId) {
+      return res.status(403).json({
+        message: "You can only update menu items of your own truck",
+      });
+    }
+
+    // 4️⃣ Build the updated fields (only what user sends)
+    const updateData = {};
+    const allowedFields = ["name", "price", "description", "category", "status"];
+
+    allowedFields.forEach((field) => {
+      if (req.body[field] !== undefined) {
+        updateData[field] = req.body[field];
+      }
+    });
+
+    if (Object.keys(updateData).length === 0) {
+      return res.status(400).json({
+        message: "No valid fields provided for update",
+      });
+    }
+
+    // 5️⃣ Update the item in the database
+    const [updatedItem] = await db("FoodTruck.MenuItems")
+      .where({ itemId })
+      .update(updateData)
+      .returning("*");
+
+    // 6️⃣ Respond with success
+    return res.json({
+      message: "menu item was updated successfully",
+      item: updatedItem,
+    });
+  } catch (error) {
+    console.error("Error updating menu item:", error);
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+});
 
 
 
@@ -182,10 +306,48 @@ app.get("/menuItem/truck/:truckId/category/:category", async (req, res) => {
 
 
 
+app.get('/api/v1/trucks/myTruck', async (req, res) => {
+  try {
+    // 1️⃣ Get logged-in user
+    const user = await getUser(req);
 
+    // Ensure the user is a truck owner
+    if (!user || user.role !== "truckOwner") {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
 
+    // 2️⃣ Get truckId from user object (provided by getUser)
+    const { truckId } = user;
 
+    if (!truckId) {
+      return res.status(404).json({
+        message: "This truck owner does not have a truck assigned",
+      });
+    }
 
+    // 3️⃣ Fetch truck info
+    const truck = await db("FoodTruck.Trucks")
+      .where({ truckId })
+      .first();
+
+    if (!truck) {
+      return res.status(404).json({ message: "Truck not found" });
+    }
+
+    // 4️⃣ Respond with truck data
+    return res.json({
+      message: "Truck information retrieved successfully",
+      truck,
+    });
+
+  } catch (error) {
+    console.error("Error getting truck info:", error);
+    return res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+});
 
 
 
