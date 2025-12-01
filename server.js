@@ -25,6 +25,8 @@ app.use(authMiddleware);
 handlePrivateFrontEndView(app);
 handlePrivateBackendApi(app);
 
+
+
 app.listen(PORT, () => {
     console.log(`Server is now listening at port ${PORT} on http://localhost:${PORT}/`);
 });
