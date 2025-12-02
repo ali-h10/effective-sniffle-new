@@ -36,7 +36,7 @@ app.post("/api/v1/cart/new",async(req,res)=>{
   if(!menuItem){
     return res.status(404).json({ message: "Item not found or unavailable" });
   }
-
+  
   const newItemTruckId = menuItem.truckId;
 
     const existingCartItems = await db("FoodTruck.Carts")
@@ -58,7 +58,7 @@ app.post("/api/v1/cart/new",async(req,res)=>{
       userId,
       itemId,
       quantity,
-      price,
+      price: price*quantity,
     });
 
     return res.status(200).json({
