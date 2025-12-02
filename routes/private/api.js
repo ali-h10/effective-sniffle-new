@@ -437,6 +437,37 @@ app.delete('/api/v1/menuItem/delete/:itemId', async (req, res) => {
 
 
   
+//menna+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    app.get("/api/v1/cart/view", async (req, res) => {
+  try {
+    // 1. Get the logged-in user
+    const user = await getUser(req);
+    const userId = user.userId;
+
+    // 2. Get all cart items for this user
+    const cartItems = await db("FoodTruck.Carts")
+      .where({ userId })
+      .join("FoodTruck.MenuItems", "Carts.itemId", "MenuItems.itemId")
+      .select(
+        "Carts.cartId",
+        "Carts.userId",
+        "Carts.itemId",
+        "MenuItems.name as itemName",
+        "Carts.price",
+        "Carts.quantity"
+      )
+      .orderBy("Carts.cartId", "asc");
+
+    // 3. Respond with the cart items
+    return res.status(200).json(cartItems);
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: "Internal server error"
+    });
+  }
+});
 
 
 };
