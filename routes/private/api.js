@@ -18,7 +18,7 @@ function handlePrivateBackendApi(app) {
 
 
 //API: add items to cart [ ALI DID IT :) ] -----------------------------------------------------------
-app.post("/cart/new",async(req,res)=>{
+app.post("/api/v1/cart/new",async(req,res)=>{
    try{
   const { itemId, quantity, price }=req.body;
 
@@ -76,7 +76,7 @@ app.post("/cart/new",async(req,res)=>{
 
 
 //API: Update Order Status [ ALI DID IT and hopes he doesnt face more 500 errors :) ]-----------------------------
-app.put('/updateStatus/:orderId',async (req,res)=>{
+app.put('/api/v1/updateStatus/:orderId',async (req,res)=>{
 
  try {
     const { orderId } = req.params;
@@ -136,7 +136,7 @@ app.put('/updateStatus/:orderId',async (req,res)=>{
 
 
 //API:Search Menu Items by Category [ ALI DID IT and hopes he doesnt face more 500 errors :) ]-------------------
-app.get("/menuItem/truck/:truckId/category/:category", async (req, res) => {
+app.get("/api/v1/menuItem/truck/:truckId/category/:category", async (req, res) => {
   try {
     const { truckId, category } = req.params;
 
@@ -171,7 +171,7 @@ app.get("/menuItem/truck/:truckId/category/:category", async (req, res) => {
   }
 });
 
-
+//rahaf.....................................................................................
 app.post('/api/v1/menuItem/new' ,  async (req, res)  => {
   try {
     // 1️⃣ Get logged-in user (from session cookie)
@@ -226,6 +226,7 @@ app.post('/api/v1/menuItem/new' ,  async (req, res)  => {
   }
 });
 
+//rahaf.....................................................................................
 app.put('/api/v1/menuItem/edit/:itemId', async (req, res) => {
   try {
     // 1️⃣ Get logged-in user
@@ -305,7 +306,7 @@ app.put('/api/v1/menuItem/edit/:itemId', async (req, res) => {
 
 
 
-
+//rahaf.....................................................................................
 app.get('/api/v1/trucks/myTruck', async (req, res) => {
   try {
     // 1️⃣ Get logged-in user
@@ -352,12 +353,90 @@ app.get('/api/v1/trucks/myTruck', async (req, res) => {
 
 
 
+// 1️⃣ View all menu items for the truck owner mariam )))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+app.get('/api/v1/menuItem/view', async (req, res) => {
+  try {
+    const user = await getUser(req);
+    const truckId = user.truckId;
 
+    if (!truckId) {
+      return res.status(403).json({ message: "No truck found for this user" });
+    }
+
+    // Get all available menu items for this truck
+    const menuItems = await db.select('*')
+      .from('FoodTruck.MenuItems')
+      .where('truckId', truckId)
+      .andWhere('status', 'available')
+      .orderBy('itemId');
+
+    return res.status(200).json(menuItems);
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// 2️⃣ View a specific menu item  mariam )))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+app.get('/api/v1/menuItem/view/:itemId', async (req, res) => {
+  try {
+    const user = await getUser(req);
+    const truckId = user.truckId;
+    const itemId = req.params.itemId;
+
+    if (!truckId) {
+      return res.status(403).json({ message: "No truck found for this user" });
+    }
+
+    const menuItem = await db.select('*')
+      .from('FoodTruck.MenuItems')
+      .where('truckId', truckId)
+      .andWhere('itemId', itemId)
+      .first();
+
+    if (!menuItem) {
+      return res.status(404).json({ message: 'Menu item not found' });
+    }
+
+    return res.status(200).json(menuItem);
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// 3️⃣ Delete a menu item (mark as unavailable)  mariam )))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+app.delete('/api/v1/menuItem/delete/:itemId', async (req, res) => {
+  try {
+    const user = await getUser(req);
+    const truckId = user.truckId;
+    const itemId = req.params.itemId;
+
+    if (!truckId) {
+      return res.status(403).json({ message: "No truck found for this user" });
+    }
+
+    const result = await db('FoodTruck.MenuItems')
+      .where('truckId', truckId)
+      .andWhere('itemId', itemId)
+      .delete( '*' );
+
+    if (result === 0) {
+      return res.status(404).json({ message: 'Menu item not found or not yours' });
+    }
+
+    return res.status(200).json({ message: 'menu item deleted successfully' });
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Server error' });
+  }
+});
 
 
   
-
-
 
 
 };
