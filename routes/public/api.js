@@ -69,15 +69,57 @@ function handlePublicBackendApi(app) {
         return res.status(400).send('Could not register user');
       }
     });
+      // 1️⃣ GET all available trucks
+app.get("/api/v1/trucks/view", async (req, res) => {
+    try {
+        const trucks = await db("FoodTruck.Trucks")
+            .select(
+                "truckId",
+                "truckName",
+                "truckLogo",
+                "ownerId",
+                "truckStatus",
+                "orderStatus",
+                "createdAt"
+            )
+            .where({ truckStatus: "available", orderStatus: "available" })
+            .orderBy("truckId", "asc");
 
+      
+        res.json(trucks);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
+// 2️⃣ GET menu items for a specific truck
+// ----------------------
+app.get("/api/v1/menuItem/truck/:truckId", async (req, res) => {
+    try {
+        const { truckId } = req.params;
 
+        const menuItems = await db("FoodTruck.MenuItems")
+            .select(
+                "itemId",
+                "truckId",
+                "name",
+                "description",
+                "price",
+                "category",
+                "status",
+                "createdAt"
+            )
+            .where({ truckId, status: "available" })
+            .orderBy("itemId", "asc");
 
-    
-
-
-
+      
+        res.json(menuItems);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 };
-
 
 module.exports = {handlePublicBackendApi};

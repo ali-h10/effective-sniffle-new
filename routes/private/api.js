@@ -71,6 +71,40 @@ app.post("/api/v1/cart/new",async(req,res)=>{
    }
 });
 
+// 3️⃣ PUT update truck order availability
+// ----------------------
+app.put("/api/v1/trucks/updateOrderStatus", async (req, res) => {
+    try {
+        const { orderStatus } = req.body;
+
+        // Validate input
+        if (!orderStatus || !["available", "unavailable"].includes(orderStatus)) {
+            return res.status(400).json({ error: "Invalid orderStatus value" });
+        }
+
+        // Get current truck owner's truckId
+        const user = await getUser(req);
+        const truckId = user.truckId;
+
+        if (!truckId) {
+            return res.status(404).json({ error: "Truck not found for this owner" });
+        }
+
+        // Update orderStatus for this truck only
+        await db("FoodTruck.Trucks")
+            .where({ truckId })
+            .update({ orderStatus });
+
+        console.log("Update truck order status route hit for truckId:", truckId);
+        res.json({ message: "truck order status updated successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
+
 
 
 
