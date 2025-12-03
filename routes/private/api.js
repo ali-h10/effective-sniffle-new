@@ -36,7 +36,7 @@ app.post("/api/v1/cart/new",async(req,res)=>{
   if(!menuItem){
     return res.status(404).json({ message: "Item not found or unavailable" });
   }
-  
+
   const newItemTruckId = menuItem.truckId;
 
     const existingCartItems = await db("FoodTruck.Carts")
@@ -110,7 +110,7 @@ app.put("/api/v1/trucks/updateOrderStatus", async (req, res) => {
 
 
 //API: Update Order Status [ ALI DID IT and hopes he doesnt face more 500 errors :) ]-----------------------------
-app.put('/api/v1/updateStatus/:orderId',async (req,res)=>{
+app.put("/api/v1/order/updateStatus/:orderId",async (req,res)=>{
 
  try {
     const { orderId } = req.params;
