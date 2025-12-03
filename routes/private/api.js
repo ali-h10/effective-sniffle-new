@@ -731,7 +731,7 @@ app.post("/api/v1/order/new", async (req, res) => {
           return res.status(403).json({ error: "Only customers can view their orders" });
       }
 
-      const userId = user.id;
+      const userId = user.userId;
       const orders = await db("FoodTruck.Orders as o")
           .join("FoodTruck.Trucks as t", "o.truckId", "t.truckId")
           .where("o.userId", userId)
