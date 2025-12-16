@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="/js/jquery-2.2.0.min.js"></script>
+  <script src="/src/trucks.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard-header">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button onclick="history.back()" class="logout-btn">←</button>
+    <div>
+      <h1>Magical Food Trucks</h1>
+      <p>Choose your favorite wizarding cuisine</p>
+    </div>
+  </div>
+</div>
+
+<div class="stats" id="trucksContainer">
+  <!-- Trucks will be injected here -->
+</div>
+
+</body>
+</html>

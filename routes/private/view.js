@@ -65,7 +65,18 @@ function handlePrivateFrontEndView(app) {
   });
 });
 
+
+
+app.get("/trucks", (req, res) => {
+  res.render("trucks");
+});
+
+
+
 }  
+
+
+
   
 module.exports = {handlePrivateFrontEndView};
   
