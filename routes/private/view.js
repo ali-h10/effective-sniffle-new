@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 
 function handlePrivateFrontEndView(app) {
 
-    app.get('/dashboard' , async (req , res) => {
+   app.get('/dashboard' , async (req , res) => {
         
         const user = await getUser(req);
         if(user.role == "truckOwner"){
@@ -27,6 +27,44 @@ function handlePrivateFrontEndView(app) {
         }
       
     });  
+
+    //ALI ---------------------------------------------------------------------------------------------------------------------
+    app.get("/ownerDashboard", async (req, res) => {
+  const user = await getUser(req);
+
+  const truck = await db("FoodTruck.Trucks")
+    .where({ ownerId: user.userId })
+    .first();
+
+  const menuCount = await db("FoodTruck.MenuItems")
+    .where({ truckId: truck.truckId })
+    .count("* as count");
+
+  const pendingOrders = await db("FoodTruck.Orders")
+    .where({ truckId: truck.truckId, orderStatus: "pending" })
+    .count("* as count");
+
+  const completedOrders = await db("FoodTruck.Orders")
+    .where({ truckId: truck.truckId, orderStatus: "completed" })
+    .count("* as count");
+
+  const recentOrders = await db("FoodTruck.Orders")
+    .where({ truckId: truck.truckId })
+    .orderBy("createdAt", "desc")
+    .limit(3);
+
+  res.render("ownerDashboard", {
+    username: user.name,
+    truckName: truck.truckName,
+    availability: truck.orderStatus ? "available" : "unavailable",
+    isAvailable: truck.orderStatus ,
+    menuCount: menuCount[0].count,
+    pendingOrders: pendingOrders[0].count,
+    completedOrders: completedOrders[0].count,
+    recentOrders
+  });
+});
+
 }  
   
 module.exports = {handlePrivateFrontEndView};
