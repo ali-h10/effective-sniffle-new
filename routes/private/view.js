@@ -66,6 +66,7 @@ function handlePrivateFrontEndView(app) {
 });
 
 
+//ALI ---------------------------------------------------------------------------------------------------------------------
 
 app.get("/trucks", (req, res) => {
   res.render("trucks");
