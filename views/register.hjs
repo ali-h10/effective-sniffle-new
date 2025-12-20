@@ -9,8 +9,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/style.css">
   
-  <script src="/src/register.js"></script>
   <script src="/js/jquery-2.2.0.min.js"></script>
+  <script src="/src/register.js"></script>
 </head>
 
 <body>
