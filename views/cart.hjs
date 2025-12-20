@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/dashboard">GIU Food Truck</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item"><a class="nav-link" href="/trucks">Browse Trucks</a></li>
+    <li class="nav-item"><a class="nav-link" href="/myOrders">My Orders</a></li>
+    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="container mt-5">
+  <h2 class="mb-4">🛒 Your Cart</h2>
+<div id="orderMsg"
+     class="alert alert-success text-center"
+     style="display:none;">
+  ✨ Your enchanted order was placed successfully!
+</div>
+
+
+  <div id="cartContainer"></div>
+
+
+  <div id="cartFooter" class="mt-4" style="display:none;">
+    <div class="form-group">
+      <label>Pickup Time</label>
+      <input type="time" id="pickupTime" class="form-control">
+    </div>
+
+    <h4>Total: <span id="cartTotal">0</span> EGP</h4>
+    <button id="placeOrderBtn" class="btn btn-success mt-3">Place Enchanted Order ✨</button>
+  </div>
+</div>
+
+<script src="/js/jquery-2.2.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/src/cart.js"></script>
+</body>
+</html>

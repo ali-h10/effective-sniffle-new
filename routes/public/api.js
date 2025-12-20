@@ -70,7 +70,7 @@
         return res.status(400).send('Could not register user');
       }
     });
-      // 1️⃣ GET all available trucks
+      // 1️⃣ GET all available trucks(Rawda)
 app.get("/api/v1/trucks/view", async (req, res) => {
     try {
         const trucks = await db("FoodTruck.Trucks")
@@ -94,7 +94,7 @@ app.get("/api/v1/trucks/view", async (req, res) => {
     }
 });
 
-// 2️⃣ GET menu items for a specific truck
+// 2️⃣ GET menu items for a specific truck(Rawda)
 // ----------------------
 app.get("/api/v1/menuItem/truck/:truckId", async (req, res) => {
     try {

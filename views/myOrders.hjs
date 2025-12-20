@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Magical Orders</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    #ordersCount {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: #ccc;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .card.border-info {
+      box-shadow: 0 0 10px rgba(91, 192, 222, 0.6);
+    }
+
+    .status-pending {
+      color: #f0ad4e;
+      font-weight: bold;
+    }
+
+    .status-preparing {
+      color: #5bc0de;
+      font-weight: bold;
+    }
+
+    .status-ready {
+      color: #5cb85c;
+      font-weight: bold;
+    }
+
+    /* Ensure per-card View Details button text is black for high contrast */
+    .view-details-btn {
+      color: #000 !important;
+    }
+
+    .view-details-btn:hover {
+      color: #000 !important;
+    }
+
+    #noOrders {
+      text-align: center;
+      margin-top: 40px;
+      color: #888;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-4">
+
+    <h1>My Magical Orders</h1>
+
+    <div id="ordersCount"></div>
+
+    <!-- Top 'View Order Details' button removed (inline details used) -->
+
+    <div id="ordersContainer"></div>
+
+    <div id="noOrders" class="d-none">
+      You have no orders yet.
+    </div>
+  </div>
+
+  <!-- 🔥 ORDER DETAILS MODAL -->
+  <div class="modal fade" id="orderDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-light">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Order Details</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <div class="modal-body" id="orderDetailsBody">
+          Loading...
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔥 REQUIRED: Bootstrap JS -->
+  <script src="/js/bootstrap.min.js"></script>
+
+  <!-- Your JS -->
+  <script src="/src/myOrders.js"></script>
+
+</body>
+</html>

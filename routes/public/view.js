@@ -11,4 +11,3 @@ function handlePublicFrontEndView(app) {
 }  
   
 module.exports = {handlePublicFrontEndView};
-  

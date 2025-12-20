@@ -6,3 +6,125 @@
 .center {
   text-align: center;
 }
+/* BODY */
+body {
+  background-color: #121212; /* dark page */
+  color: #f0f0f0; /* readable text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+  padding: 0.75rem 1rem;
+  background-color: #1f1f1f !important;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #ffcc00 !important;
+}
+
+.navbar-nav .nav-link {
+  margin-left: 15px;
+  color: #fff !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffcc00 !important;
+}
+
+/* CART CARD */
+#cartContainer .card {
+  background-color: #1e1e2f;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
+  color: #f0f0f0;
+}
+
+#cartContainer .card:hover {
+  transform: translateY(-3px);
+}
+
+.card-body h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* BUTTONS */
+.card-body button {
+  min-width: 35px;
+}
+
+.card-body .increase,
+.card-body .decrease {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin: 0 2px;
+}
+
+.card-body .increase:hover,
+.card-body .decrease:hover {
+  background-color: #5a6268;
+}
+
+.card-body .remove {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+
+.card-body .remove:hover {
+  background-color: #c82333;
+}
+
+/* CART FOOTER */
+#cartFooter {
+  background-color: #1e1e2f;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+#cartFooter h4 {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#cartFooter input[type="time"] {
+  max-width: 200px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+/* EMPTY CART MESSAGE */
+#cartContainer p {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 40px;
+  color: #ffd700;
+}
+
+#cartContainer p a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#cartContainer p a:hover {
+  text-decoration: underline;
+}
+

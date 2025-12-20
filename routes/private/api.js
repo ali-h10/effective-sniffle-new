@@ -71,7 +71,7 @@ app.post("/api/v1/cart/new",async(req,res)=>{
    }
 });
 
-// 3️⃣ PUT update truck order availability
+// 3️⃣ PUT update truck order availability(Rawda)
 // ----------------------
 app.put("/api/v1/trucks/updateOrderStatus", async (req, res) => {
     try {
@@ -683,16 +683,32 @@ app.post("/api/v1/order/new", async (req, res) => {
     }
 
     // 6. Insert the order
-    const [newOrder] = await db("FoodTruck.Orders")
-      .insert({
-        userId: user.userId,
-        truckId,
-        orderStatus: "pending",
-        scheduledPickupTime,
-        estimatedEarliestPickup: scheduledPickupTime, // your story says to set it
-        totalPrice
-      })
-      .returning("*");
+   // already declared earlier
+// const { scheduledPickupTime } = req.body; 
+
+// Convert HH:MM into a full timestamp
+const now = new Date();
+const [hour, minute] = scheduledPickupTime.split(":").map(Number);
+const scheduledDate = new Date(
+  now.getFullYear(),
+  now.getMonth(),
+  now.getDate(),
+  hour,
+  minute,
+  0
+);
+
+// Insert into DB
+const [newOrder] = await db("FoodTruck.Orders")
+  .insert({
+    userId: user.userId,
+    truckId,
+    orderStatus: "pending",
+    scheduledPickupTime: scheduledDate,
+    estimatedEarliestPickup: scheduledDate,
+    totalPrice
+  })
+  .returning("*");
 
     // 7. Insert into OrderItems
     for (const item of cartItems) {

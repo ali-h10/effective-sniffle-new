@@ -27,6 +27,23 @@ function handlePrivateFrontEndView(app) {
         }
       
     });  
+
+    // CART PAGE
+app.get('/cart', async (req, res) => {
+    const user = await getUser(req);
+    if (!user) return res.redirect('/login');
+
+    return res.render('cart');
+});
+
+// MY ORDERS PAGE
+app.get('/myOrders', async (req, res) => {
+    const user = await getUser(req);
+    if (!user) return res.redirect('/login');
+
+    return res.render('myOrders');
+});
+
 }  
   
 module.exports = {handlePrivateFrontEndView};
