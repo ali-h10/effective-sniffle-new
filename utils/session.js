@@ -54,7 +54,19 @@ async function getUser(req) {
   console.log('user =>', user)
   return user;  
 }
+function clearSession(req) {
+  // Clear the local session data
+  req.sessionData = null;
+
+  // Remove the session_token from the cookie header (so it won't be sent again)
+  if (req.headers.cookie) {
+    req.headers.cookie = req.headers.cookie
+      .split(';')
+      .filter(c => !c.trim().startsWith('session_token='))
+      .join('; ');
+  }
+}
 
 
 
-module.exports = {getSessionToken , getUser};
+module.exports = {getSessionToken , getUser, clearSession};

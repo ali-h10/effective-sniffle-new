@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Truck Menu</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+
+  <!-- jQuery -->
+  <script src="/js/jquery-2.2.0.min.js"></script>
+
+  <!-- Truck Menu JS -->
+  <script src="/src/truckMenu.js" defer></script>
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+<ul class="nav-bar">
+  <li><button class="nav-btn" data-path="/dashboard">Dashboard</button></li>
+  <li><button class="nav-btn" data-path="/cart">Cart</button></li>
+  <li><button class="nav-btn" data-path="/myOrders">My Orders</button></li>
+  <li><button id="logoutBtn">Logout</button></li>
+</ul>
+
+<h1 class="section-title">🪄 Truck Menu</h1>
+
+<!-- CATEGORY FILTER -->
+<div class="filter-bar">
+  <label for="categorySelect">Filter by Category:</label>
+  <select id="categorySelect" class="form-control">
+    <!-- Options populated dynamically from JS -->
+  </select>
+</div>
+
+<!-- MENU ITEMS CONTAINER -->
+<div id="menuItems" class="action-grid"></div>
+
+<!-- SUCCESS MESSAGE -->
+<p id="successMsg" style="display:none;color:#c8a951;">
+  Item added to cart!
+</p>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Nav buttons
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.addEventListener("click", function () {
+        const path = btn.getAttribute("data-path");
+        if (path) window.location.href = path;
+      });
+    });
+
+    // Logout button
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function () {
+        window.location.href = "/logout";
+      });
+    }
+  });
+</script>
+</body>
+</html>
+
+

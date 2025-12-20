@@ -1,22 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <link rel='stylesheet' href='/styles/bootstrap.min.css' />
-      <link rel='stylesheet' href='/styles/style.css' />
-      <script src="/js/jquery-2.2.0.min.js" type="text/javascript"></script>
-      <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-  </head>
-  <body>
-    <div>
-      <nav class="navbar navbar-inverse" style="padding-left:130px;">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-          </ul>
-      </nav>
+<head>
+  <title>Customer Dashboard</title>
+
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+
+  <script src="/js/jquery-2.2.0.min.js"></script>
+  <script src="/src/customerHomepage.js"></script>
+</head>
+
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="dashboard-header">
+  <ul style="display:flex;gap:15px;list-style:none;margin:0;">
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/trucks">
+        Browse Trucks
+      </button>
+    </li>
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/cart">
+        View Cart
+      </button>
+    </li>
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/myOrders">
+        My Orders
+      </button>
+    </li>
+    <li>
+      <button type="button" id="logoutBtn" class="logout-btn">
+        Logout
+      </button>
+    </li>
+  </ul>
+</nav>
+<!-- QUICK ACTIONS -->
+<section>
+  <h2 class="section-title">Quick Actions</h2>
+
+  <div class="action-grid">
+    <button id="browseAction">
+      <div class="action-icon">🚚</div>
+      <h4>Browse Trucks</h4>
+      <p>Find available magical food trucks</p>
+    </button>
+
+    <button id="cartAction">
+      <div class="action-icon">🛒</div>
+      <h4>View Cart</h4>
+      <p>Review selected items</p>
+    </button>
+
+    <button id="ordersAction">
+      <div class="action-icon">📜</div>
+      <h4>My Orders</h4>
+      <p>Track order status</p>
+    </button>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2 class="section-title">How It Works</h2>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-icon">1️⃣</div>
+      <h3>Browse Trucks</h3>
+      <span>Choose a food truck you like</span>
     </div>
 
-    <div class="center">
-      <h1>Welcome customer {{ name }}</h1>
+    <div class="stat-card">
+      <div class="stat-icon">2️⃣</div>
+      <h3>Select Items</h3>
+      <span>Add food to your cart</span>
     </div>
-  </body>
+
+    <div class="stat-card">
+      <div class="stat-icon">3️⃣</div>
+      <h3>Place Order</h3>
+      <span>Checkout and track your order</span>
+    </div>
+  </div>
+</section>
+
+</body>
 </html>

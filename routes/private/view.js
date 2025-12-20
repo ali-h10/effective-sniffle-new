@@ -28,6 +28,26 @@ function handlePrivateFrontEndView(app) {
       
     });  
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     //ALI ---------------------------------------------------------------------------------------------------------------------
     app.get("/ownerDashboard", async (req, res) => {
   const user = await getUser(req);
@@ -73,11 +93,23 @@ app.get("/trucks", (req, res) => {
 });
 
 
+//rahaffffffffffffffff
+app.get("/dashboard", async (req, res) => {
+  const user = await getUser(req);
 
+  res.render("customerHomepage", {
+    username: user.name
+  });
+});
+
+app.get("/truckMenu/:truckId", async (req, res) => {
+  res.render("truckMenu");
+});
 }  
 
+module.exports = { handlePrivateFrontEndView };
 
 
-  
-module.exports = {handlePrivateFrontEndView};
+
+
   
