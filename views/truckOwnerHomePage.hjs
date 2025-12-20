@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html>
   <head>
       <link rel='stylesheet' href='/styles/bootstrap.min.css' />
@@ -19,4 +19,4 @@
       <h1>Welcome Food Truck Owner {{ name }}</h1>
     </div>
   </body>
-</html>
+</html> --}}

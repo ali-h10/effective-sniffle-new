@@ -10,7 +10,7 @@ function handlePrivateFrontEndView(app) {
         
         const user = await getUser(req);
         if(user.role == "truckOwner"){
-            return res.render('truckOwnerHomePage' , {name : user.name});
+            return res.render('ownerDashboard' , {name : user.name});
         }
         // role of customer
         return res.render('customerHomepage' , {name : user.name});
