@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Menu Item</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/src/addMenuItem.js" defer></script>
+</head>
+<body>
+
+<div class="page-container">
+  <div class="page-header">
+    <a href="/menuItems" class="back-btn">←</a>
+    <h1>ADD MENU ITEM</h1>
+    <p>Create a new magical offering</p>
+  </div>
+
+  <form id="addMenuItemForm" class="card">
+
+    <div class="form-group">
+      <label>Name *</label>
+      <input type="text" id="name" placeholder="Butterbeer" required>
+    </div>
+
+    <div class="form-group">
+      <label>Category *</label>
+      <select id="category" required>
+        <option value="">Select a category</option>
+        <option value="Beverages">Beverages</option>
+        <option value="Pastries">Pastries</option>
+        <option value="Desserts">Desserts</option>
+        <option value="Main">Main</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea id="description" placeholder="A magical butterscotch drink..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Price *</label>
+      <input type="text" id="price" placeholder="5.99" required>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" id="cancelBtn">Cancel</button>
+      <button type="submit" class="primary-btn">
+        ➕ Add Menu Item
+      </button>
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>

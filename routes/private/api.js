@@ -234,6 +234,7 @@ app.post('/api/v1/menuItem/new' ,  async (req, res)  => {
         message: "name, price, and category are required",
       });
     }
+    
 
     // 4️⃣ Insert new record into MenuItems (status & createdAt use defaults)
     const [createdItem] = await db("FoodTruck.MenuItems")
