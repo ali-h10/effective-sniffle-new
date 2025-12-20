@@ -52,7 +52,7 @@ function renderOrders() {
         </div>
 
         <div class="order-info">
-          <p><strong>Customer:</strong> ${order.customerName}</p>
+          <p><strong>Customer:</strong> ${order.customername}</p>
           <p><strong>Total:</strong> ${order.totalPrice} EGP</p>
           <p><strong>Pickup:</strong> ${new Date(order.scheduledPickupTime).toLocaleString()}</p>
         </div>
