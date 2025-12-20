@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel='stylesheet' href='/styles/bootstrap.min.css' />
+      <link rel='stylesheet' href='/styles/style.css' />
+      <script src="/js/jquery-2.2.0.min.js" type="text/javascript"></script>
+      <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+      <script src="/src/ownerDashboard.js"></script>
+
+  </head>
+  <div class="dashboard-header">
+  <div>
+    <h1>WELCOME, {{username}} 🧙‍♂️</h1>
+    <p>Manage your magical food truck</p>
+  </div>
+
+ <button id="logoutBtn" class="logout-btn">Logout</button>
+
+</div>
+
+<div class="truck-card">
+  <div>
+    <h2> {{truckName}} </h2>
+    <p>Your magical food truck</p>
+  </div>
+
+  <div class="availability">
+    <span id="availabilityLabel">Available</span>
+
+<label class="switch">
+  <input type="checkbox" id="availabilityToggle" checked>
+  <span class="slider"></span>
+</label>
+
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat-card">
+    <h3>Menu Items</h3>
+    <span>{{menuCount}}</span>
+  </div>
+  <div class="stat-card">
+    <h3>Pending Orders</h3>
+    <span>{{pendingOrders}}</span>
+  </div>
+  <div class="stat-card">
+    <h3>Completed Orders</h3>
+    <span>{{completedOrders}}</span>
+  </div>
+</div>
+
+<h2 class="section-title">Quick Actions</h2>
+
+<div class="action-grid">
+  <button id="addMenuBtn">➕ Add Menu Item</button>
+  <button id="manageMenuBtn">📋 Manage Menu</button>
+  <button id="viewOrdersBtn">📦 View Orders</button>
+</div>
+
+
+<h2 class="section-title">Recent Orders</h2>
+
+{{#recentOrders}}
+<div class="order-card">
+  <span>#{{orderId}}</span>
+  <span>{{orderStatus}}</span>
+  <span>${{totalPrice}}</span>
+</div>
+{{/recentOrders}}
+
+{{^recentOrders}}
+<p>No recent orders.</p>
+{{/recentOrders}}
+
+</html>

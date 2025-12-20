@@ -25,6 +25,13 @@ app.use(authMiddleware);
 handlePrivateFrontEndView(app);
 handlePrivateBackendApi(app);
 
+app.get('/truckMenu', (req, res) => {
+  res.render('truckMenu');
+});
+
+app.get('/truckMenu/:truckId', (req, res) => {
+  res.render('truckMenu');
+});
 
 
 app.listen(PORT, () => {

@@ -850,6 +850,19 @@ const [newOrder] = await db("FoodTruck.Orders")
   }
 });
 
+const { getSessionToken, clearSession } = require('../../utils/session');
+const db = require('../../connectors/db');
+
+app.get('/logout', async (req, res) => {
+  const sessionToken = getSessionToken(req);
+
+  if (sessionToken) {
+    await db('FoodTruck.Sessions').where({ token: sessionToken }).del();
+  }
+
+  clearSession(req);
+  res.redirect('/login');
+});
 };
 
 module.exports = {handlePrivateBackendApi};
