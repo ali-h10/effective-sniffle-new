@@ -1,28 +1,47 @@
-$(document).ready(function(){
-    $("#submit").click(function() {
-      const email = $('#email').val();
-      const password = $('#password').val();
+$(document).ready(function () {
 
-      const data = {
-        email,
-        password,
-      };
+  let selectedRole = "customer";
 
-      $.ajax({
-        type: "POST",
-        url: '/api/v1/user/login',
-        data,
-        success: function(serverResponse) {
-          if(serverResponse) {
-            alert("login successfully");
-            location.href = '/dashboard';
-          }
-        },
-        error: function(errorResponse) {
-          if(errorResponse) {
-            alert(`User login error: ${errorResponse.responseText}`);
-          }            
-        }
-      });
+  // Role toggle
+  // $(".role").click(function () {
+  //   $(".role").removeClass("active");
+  //   $(this).addClass("active");
+  //   selectedRole = $(this).data("role");
+  // });
+
+  $("#loginForm").submit(function (e) {
+    e.preventDefault();
+
+    const email = $("#email").val().trim();
+    const password = $("#password").val().trim();
+
+    $("#errorMsg").text("");
+
+    if (!email || !password) {
+      $("#errorMsg").text("Please fill in all fields");
+      return;
+    }
+
+    $.ajax({
+      url: "/api/v1/user/login",
+      method: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        email: email,
+        password: password,
+        // role: selectedRole
+      }),
+      success: function (response) {
+        // Login successful
+        window.location.href = "/dashboard";
+      },
+      error: function (xhr) {
+        const msg =
+          xhr.responseJSON?.error ||
+          "Invalid email or password";
+        $("#errorMsg").text(msg);
+      }
     });
   });
+
+});

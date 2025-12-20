@@ -1,64 +1,59 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <head>
-      <link rel='stylesheet' href='/styles/bootstrap.min.css' />
-      <link rel='stylesheet' href='/styles/style.css' />
-      <script src="/js/jquery-2.2.0.min.js" type="text/javascript"></script>
-      <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-      <script src="/src/register.js" type="text/javascript"></script>
-    </head>
-  </head>
-  <body>
-    <div>
-      <nav class="navbar navbar-inverse" style="padding-left:130px;">
-          <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-          </ul>
-      </nav>
-    </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
 
-    <div class="center">
-      <h1>Register</h1>
+  {{!-- <!-- Bootstrap -->
+  <link rel="stylesheet" href="/styles/bootstrap.min.css"> --}}
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/styles/style.css">
+  
+  <script src="/src/register.js"></script>
+  <script src="/js/jquery-2.2.0.min.js"></script>
+</head>
+
+<body>
+
+  <div class="register-container">
+    <div class="register-card">
+
+      <!-- Icon -->
+      <div class="icon">✨</div>
+
+      <!-- Title -->
+      <h2>JOIN THE MAGIC</h2>
+      <p>Create your account and start your magical journey</p>
+
+      <!-- Error -->
+      <div id="errorMsg" class="alert alert-danger d-none"></div>
+
+      <!-- Form -->
+      <form id="registerForm">
+
+        <label>Full Name</label>
+        <input type="text" class="form-control" placeholder="Harry Potter" id="name">
+
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="wizard@hogwarts.edu" id="email">
+
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="••••••••" id="password">
+
+        <label>Birth Date</label>
+        <input type="date" class="form-control" id="birthDate">
+
+        <button type="submit" class="btn-register">
+          ✨ Register
+        </button>
+
+      </form>
+      <div class="auth-footer">
+        <span>Already have an account?</span>
+        <a href="/">Login</a>
+      </div>
     </div>
-    <div style="padding-left: 100px">
-    <form class="form-horizontal" style="width: 70%;">
-      <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Name</label>
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" name="name" placeholder="Enter First, Middle and last Name" value="" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Country</label>
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="country" name="country" placeholder="Enter Country" value="" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Birth Date</label>
-          <div class="col-sm-10">
-              <input type="date" class="form-control" id="date" name="date" placeholder="mm-dd-yyyy" value="" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="email" class="col-sm-2 control-label">Email</label>
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <label for="password" class="col-sm-2 control-label">Password</label>
-          <div class="col-sm-10">
-              <input type="password" class="form-control" id="password" name="password" placeholder="password" value="" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-sm-10 col-sm-offset-2">
-              <input id="register" name="register" type="button" value="Register" class="btn btn-primary">
-          </div>
-      </div>
-  </form>
-    </div>
-  </body>
+  </div>
+
+</body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Truck Orders</title>
+  <script src="/js/jquery-2.2.0.min.js" type="text/javascript"></script>
+  
+    <script src="/src/truckOrders.js"></script>
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <a href="/dashboard" class="back-btn">←</a>
+    <div>
+      <h1>Truck Orders</h1>
+      <span id="orderCount">0 orders</span>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters">
+    <button class="filter active" data-status="all">All</button>
+    <button class="filter" data-status="pending">Pending</button>
+    <button class="filter" data-status="preparing">Preparing</button>
+    <button class="filter" data-status="ready">Ready</button>
+    <button class="filter" data-status="completed">Completed</button>
+    <button class="filter" data-status="cancelled">Cancelled</button>
+  </div>
+
+  <!-- Orders Container -->
+  <div id="ordersContainer" class="orders-box">
+    <p class="empty">No orders found</p>
+  </div>
+    <!-- Order Details Modal -->
+<div id="orderDetailsModal" class="modal hidden">
+  <div class="modal-card">
+    <span class="close-modal">&times;</span>
+
+    <h2 id="modalOrderTitle">Order Details</h2>
+
+    <div class="modal-info">
+      <p><strong>Truck:</strong> <span id="modalTruckName"></span></p>
+      <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+      <p><strong>Total:</strong> <span id="modalTotal"></span> EGP</p>
+      <p><strong>Pickup:</strong> <span id="modalPickup"></span></p>
+    </div>
+
+    <h3>Items</h3>
+    <ul id="modalItems" class="items-list"></ul>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
