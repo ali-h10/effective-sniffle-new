@@ -28,7 +28,6 @@ function handlePrivateFrontEndView(app) {
       
     });  
 
-<<<<<<< HEAD
     // CART PAGE
 app.get('/cart', async (req, res) => {
     const user = await getUser(req);
@@ -45,7 +44,6 @@ app.get('/myOrders', async (req, res) => {
     return res.render('myOrders');
 });
 
-=======
 
 
 
@@ -123,7 +121,6 @@ app.get("/dashboard", async (req, res) => {
 app.get("/truckMenu/:truckId", async (req, res) => {
   res.render("truckMenu");
 });
->>>>>>> rahaf-front
 }  
 
 module.exports = { handlePrivateFrontEndView };
