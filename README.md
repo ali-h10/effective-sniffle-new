@@ -466,16 +466,6 @@ http://localhost:3001/
 
 *Screenshot location: `/screenshots/10-menu-items.png`*
 
-### System Pages
-
-#### 11. Error Pages
-- 404 Not Found
-- 500 Server Error
-- Validation Error Messages
-- Authentication Error Messages
-
-*Screenshot location: `/screenshots/11-error-pages.png`*
-
 ---
 
 ## 8. API Endpoints Summary
