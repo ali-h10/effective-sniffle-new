@@ -6,14 +6,29 @@
 .center { text-align: center; }
 
 /* Page base */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Cormorant+Garamond:wght@300;400;700&display=swap');
+
+:root{
+  --bg:#06060a;
+  --bg-2:#0b0710;
+  --panel: rgba(255,255,255,0.02);
+  --card: rgba(255,255,255,0.03);
+  --text:#fffdf6;
+  --muted:#cfc6bd;
+  --gold:#d4af37;
+  --accent:#5c2443;
+  --danger:#c24b3b;
+  --success:#4b7a50;
+}
+
 body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background: linear-gradient(180deg,#0c0f22 0%, #0a0b16 100%);
-  color: #efe7db;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(84,30,102,0.06), transparent), linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 24px;
-}
+} 
 /* Header */
 .dashboard-header {
   display: flex;
@@ -26,8 +41,10 @@ body {
   margin: 0;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #fff7e6;
-}
+  color: var(--gold);
+  font-family: 'Uncial Antiqua', 'Cinzel', serif;
+  text-shadow: 0 2px 8px rgba(212,175,55,0.12);
+} 
 .dashboard-header p { margin:4px 0 0 0; color: #cfc6bd; }
 .logout-btn {
   background: transparent;
@@ -55,7 +72,7 @@ body {
   width: 64px; height: 64px; border-radius: 12px; background: linear-gradient(135deg,#f2a84a,#caa74d);
   display:flex; align-items:center; justify-content:center; font-size:30px; color:#2b1d03; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
-.truck-card h2 { margin: 0; font-size: 22px; color: #fff; }
+.truck-card h2 { margin: 0; font-size: 22px; color: var(--gold); font-family: 'Cinzel', serif; } 
 .truck-card p { margin: 2px 0 0 0; color: #d7cfc6; }
 
 /* Availability area */
@@ -73,7 +90,7 @@ body {
 /* Stats grid */
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 22px; }
 .stat-card { padding: 22px; border-radius: 12px; background: rgba(255,255,255,0.02); display:flex; align-items:center; gap:14px; }
-.stat-card .stat-icon { width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); color:#ffd9a8; }
+.stat-card .stat-icon { width:56px; height:56px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(92,34,67,0.06)); color: #1a0b06; } 
 .stat-card h3 { margin: 0; font-size: 14px; color: #e9ded4; }
 .stat-card span { font-size: 26px; color: #fff; font-weight: 600; margin-left:auto; }
 
@@ -113,15 +130,15 @@ body {
   border-radius: 12px;
 }
 .nav-bar .nav-btn, #logoutBtn {
-  background-color: #1a1a1a; /* dark base */
-  color: #c8a951; /* gold-ish text */
-  border: 1px solid #c8a951;
+  background-color: rgba(255,255,255,0.02); /* dark base */
+  color: var(--gold); /* gold-ish text */
+  border: 1px solid rgba(212,175,55,0.12);
   padding: 8px 12px;
   margin: 0 5px;
   border-radius: 5px;
   transition: all 0.3s ease;
   cursor: pointer;
-}
+} 
 
 .nav-bar .nav-btn:hover,
 #logoutBtn:hover {
@@ -159,30 +176,24 @@ body {
 
 /* MENU ITEM CARD */
 .menu-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 182, 193, 0.4);
+  background: var(--card);
+  border: 1px solid rgba(212,175,55,0.08);
   border-radius: 12px;
   padding: 18px;
-
-  box-shadow:
-    0 0 8px rgba(255, 182, 193, 0.25);
-
+  box-shadow: 0 0 8px rgba(92,34,67,0.06);
   transition: all 0.3s ease;
 }
 
 .menu-card:hover {
-  box-shadow:
-    0 0 14px rgba(255, 182, 193, 0.7),
-    0 0 30px rgba(255, 182, 193, 0.4);
-
+  box-shadow: 0 0 14px rgba(212,175,55,0.18), 0 0 30px rgba(92,34,67,0.12);
   transform: translateY(-3px);
-}
+} 
 
 
 /* existing styles above */
 
 /* ===============================
-   TOP NAVIGATION – SOFT SOLID PINK
+   TOP NAVIGATION – HOGWARTS GOLD
    =============================== */
 
 /* Only top navigation buttons */
@@ -190,19 +201,14 @@ body {
 .nav-bar #logoutBtn,
 .dashboard-header .nav-btn,
 .dashboard-header #logoutBtn {
-  background-color: #f4b6c2; /* solid soft pink */
-  color: #2b0f1f; /* deep plum text */
-  border: none;
+  background-color: rgba(212,175,55,0.06);
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.12);
   border-radius: 8px;
   padding: 8px 16px;
   font-weight: 600;
   cursor: pointer;
-
-  /* halo glow */
-  box-shadow:
-    0 0 8px rgba(244, 182, 194, 0.8),
-    0 0 18px rgba(244, 182, 194, 0.6);
-
+  box-shadow: 0 0 8px rgba(212,175,55,0.06), 0 0 18px rgba(92,34,67,0.04);
   transition: all 0.25s ease;
 }
 
@@ -211,15 +217,11 @@ body {
 .nav-bar #logoutBtn:hover,
 .dashboard-header .nav-btn:hover,
 .dashboard-header #logoutBtn:hover {
-  background-color: #f7c6d0; /* slightly lighter pink */
-  color: #1a0a12;
-
-  box-shadow:
-    0 0 12px rgba(244, 182, 194, 1),
-    0 0 30px rgba(244, 182, 194, 0.85);
-
+  background-color: rgba(212,175,55,0.12);
+  color: #0b0710;
+  box-shadow: 0 0 12px rgba(212,175,55,0.35), 0 0 30px rgba(92,34,67,0.15) inset;
   transform: translateY(-2px);
-}
+} 
 
 
 /* NAV BAR HORIZONTAL */
@@ -252,10 +254,10 @@ body {
 }
 /* BODY */
 body {
-  background-color: #121212; /* dark page */
-  color: #f0f0f0; /* readable text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+  background-color: transparent;
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+} 
 
 /* NAVBAR */
 .navbar {
@@ -265,7 +267,7 @@ body {
 
 .navbar-brand {
   font-weight: bold;
-  color: #ffcc00 !important;
+  color: var(--gold) !important;
 }
 
 .navbar-nav .nav-link {
@@ -274,7 +276,7 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffcc00 !important;
+  color: var(--gold) !important;
 }
 
 /* CART CARD */
@@ -399,6 +401,123 @@ body {
   margin-bottom: 25px;
 }
 
+/* ========== THEME OVERRIDES: HARRY POTTER DARK ========== */
+/* Ensure headings & accents use magical fonts and high-contrast colors */
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Uncial Antiqua', 'Cinzel', serif;
+  color: var(--gold);
+}
+
+p, label, input, textarea, .muted, .dashboard-header p {
+  color: var(--muted);
+}
+
+a, a:link, a:visited {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+a:hover { color: #fff; text-decoration: none; }
+
+button, .btn {
+  font-family: 'Cinzel', serif;
+}
+
+/* Make sure small panel backgrounds are readable */
+.truck-card, .stat-card, .action-grid button, .order-card, .card {
+  background: var(--panel);
+}
+
+/* subtle magical glow on focus for inputs */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(212,175,55,0.12);
+  border-color: rgba(212,175,55,0.2);
+}
+
+/* ensure any critical text remains high contrast */
+strong, b { color: var(--text); }
+
+/* end theme overrides */
+
+/* ========== MY ORDERS PAGE OVERRIDES ==========
+   The My Orders view includes inline styles. These rules
+   are more specific and use !important when necessary to
+   ensure the page matches the site theme without changing
+   the templates or functionality.
+*/
+
+/* Override inline body color/background from page (scoped to My Orders page)
+   using :has so it doesn't affect other pages like login */
+body:has(#ordersContainer) {
+  background-color: transparent !important;
+  color: var(--text) !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
+/* Page title and counts */
+.container.py-4 h1,
+#ordersCount {
+  color: var(--gold) !important;
+  font-family: 'Uncial Antiqua', 'Cinzel', serif !important;
+  text-shadow: 0 2px 6px rgba(212,175,55,0.08);
+}
+
+/* Card list container - use navy cards */
+#ordersContainer .card,
+#ordersContainer .order-card,
+.orders-box .card {
+  background: linear-gradient(180deg, #0b1b3b 0%, #081428 100%) !important;
+  color: var(--text) !important;
+  border-radius: 12px !important;
+  padding: 18px !important;
+  margin-bottom: 18px !important;
+  border: 1px solid rgba(212,175,55,0.06) !important;
+  box-shadow: 0 6px 18px rgba(2,6,20,0.6), 0 0 8px rgba(11,27,56,0.12) !important;
+}
+
+/* Special border glow for .card.border-info (replace blue tint with gold) */
+.card.border-info {
+  box-shadow: 0 0 12px rgba(212,175,55,0.18) !important;
+}
+
+/* Status badges using theme colors */
+.status-pending { color: var(--gold); font-weight: bold; }
+.status-preparing { color: var(--accent); font-weight: bold; }
+.status-ready { color: var(--success); font-weight: bold; }
+
+/* Buttons inside the cards should use magical font & be legible */
+#ordersContainer .view-details-btn,
+.view-details-btn {
+  color: var(--bg-2) !important;
+  background: var(--gold) !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-family: 'Cinzel', serif !important;
+  text-decoration: none !important;
+}
+
+.view-details-btn:hover { filter: brightness(0.95); }
+
+#noOrders { color: var(--muted) !important; }
+
+/* Hide the 'no orders' message automatically when there are order cards present (modern browsers supporting :has). */
+#ordersContainer:has(.card) ~ #noOrders,
+.container:has(#ordersContainer .card) #noOrders {
+  display: none !important;
+}
+
+/* Ensure modal header/body follow theme when order details open */
+.modal-content.bg-dark.text-light {
+  background: linear-gradient(180deg, rgba(11,7,16,0.95), rgba(6,6,10,0.98));
+  color: var(--text);
+}
+
+/* tune small text contrast */
+#ordersContainer .small, .card small { color: var(--muted) !important; }
+
+/* end my orders overrides */
+
 /* Limit dropdown width */
 #categorySelect {
   width: 33%;
@@ -413,23 +532,100 @@ input[type="number"] {
 #menuItems > div {
   background: linear-gradient(135deg, #1a1f3c, #242b55);
   border-radius: 18px;
-  padding: 22px;
+  padding: 28px; /* more breathing room for larger text */
 
   box-shadow:
-    0 0 12px rgba(244, 182, 194, 0.35),
-    0 0 26px rgba(244, 182, 194, 0.18);
+    0 0 12px rgba(92,34,67,0.12),
+    0 0 26px rgba(212,175,55,0.08);
 }
 #menuItems h3 {
-  font-size: 1.4rem;
+  font-size: 1.9rem; /* larger title */
+  margin: 0 0 8px 0;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
 }
 
 #menuItems p {
-  font-size: 1.1rem;
+  font-size: 1.125rem; /* slightly larger description */
   line-height: 1.6;
+  color: var(--muted);
 }
 
 #menuItems strong {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+/* Make labels and small controls in menu items more readable */
+#menuItems label,
+#menuItems .quantity-label,
+#menuItems .price {
+  font-size: 1.15rem; /* increased for clarity */
+  color: var(--muted);
+}
+
+#menuItems .add-to-cart {
+  font-size: 1.12rem; /* slightly larger button text */
+}
+
+#menuItems .menu-item p {
+  font-size: 1.2rem; /* larger description text */
+}
+
+#menuItems .menu-item h3 {
+  font-size: 2.05rem; /* slightly larger title */
+}
+
+#menuItems .menu-item strong { font-size: 1.18rem; }
+
+/* Layout for menu item controls to avoid clipping */
+#menuItems .menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+#menuItems .menu-item h3,
+#menuItems .menu-item p {
+  margin: 0 0 6px 0;
+}
+
+/* Left content takes available space */
+#menuItems .menu-item > h3,
+#menuItems .menu-item > p,
+#menuItems .menu-item > strong {
+  flex: 1 1 auto;
+}
+
+/* Controls column */
+#menuItems .menu-item input[type="number"] {
+  width: 110px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: #fff;
+  color: #000;
+}
+
+#menuItems .menu-item button {
+  min-width: 140px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(212,175,55,0.08);
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.12);
+  font-family: 'Cinzel', serif;
+}
+
+#menuItems .menu-item button:hover {
+  filter: brightness(1.05);
+}
+
+@media (max-width: 900px) {
+  #menuItems .menu-item { flex-direction: column; align-items: stretch; }
+  #categorySelect { width: 100% !important; min-width: 0 !important; }
 }
 /* Menu grid */
 #menuItems {
@@ -631,6 +827,62 @@ a {
 /* ===== Category select ===== */
 #menuItemsBody select {
   cursor: pointer;
+}
+
+/* Make the Filter-by-Category dropdown and its options black with high contrast */
+#categorySelect,
+.truck-menu-header select {
+  display: block;
+  margin: 8px auto;
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  padding: 12px 52px 12px 28px !important; /* more right padding for arrow */
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  width: min(70%, 900px) !important; /* allow wider width but cap it */
+  max-width: 900px !important;
+  min-width: 360px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23d4af37' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 14px;
+  text-align: left !important; /* ensure full name is visible in Chrome */
+  overflow: visible !important;
+}
+
+#categorySelect option,
+.truck-menu-header select option {
+  padding: 6px 12px;
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* On small screens make it full width */
+@media (max-width: 900px) {
+  #categorySelect, .truck-menu-header select { width: 100% !important; min-width: 0 !important; }
+}
+
+#categorySelect option,
+.truck-menu-header select option {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+#categorySelect option:hover,
+.truck-menu-header select option:hover {
+  background-color: #111 !important;
+}
+
+/* Ensure focus state is visible */
+#categorySelect:focus,
+.truck-menu-header select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(212,175,55,0.12);
+  border-color: rgba(212,175,55,0.12) !important;
 }
 
 /* ===== Clean Availability Toggle ===== */
@@ -1266,22 +1518,25 @@ body {
 }
 
 .orders-box {
-  background: #2a2d44;
+  background: linear-gradient(180deg, rgba(11,27,56,0.95), rgba(8,16,34,0.95));
   border-radius: 20px;
   padding: 30px;
   min-height: 150px;
+  box-shadow: 0 6px 18px rgba(2,6,20,0.6);
 }
 
 .empty {
   text-align: center;
-  color: #aaa;
+  color: var(--muted);
 }
 
 .order-card {
-  background: #1f2233;
+  background: linear-gradient(180deg, #0b1b3b 0%, #081428 100%);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+  border: 1px solid rgba(212,175,55,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,20,0.6), 0 0 8px rgba(11,27,56,0.2);
 }
 
 .order-top {
@@ -1292,6 +1547,7 @@ body {
 
 .order-id {
   font-weight: bold;
+  color: var(--muted);
 }
 
 .status {
