@@ -137,10 +137,7 @@ app.get("/trucks", (req, res) => {
 app.get("/dashboard", async (req, res) => {
   try {
     const user = await getUser(req);
-    if (!user) return res.redirect('/');
-    if(user.role !== 'customer'){
-      return res.render('ownerDashboard', { name: user.name });
-    }
+
     res.render("customerHomepage", {
       name: user.name
     });

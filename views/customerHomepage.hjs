@@ -1,412 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Customer Dashboard - Food Truck Ordering System</title>
+  <title>Customer Dashboard</title>
 
-  <link rel="stylesheet" href="/styles/style.css" />
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+
   <script src="/js/jquery-2.2.0.min.js"></script>
   <script src="/src/customerHomepage.js"></script>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0c0f22 0%, #1a1f3a 100%);
-      color: #cfc6bd;
-      min-height: 100vh;
-    }
-
-    /* NAVIGATION */
-    .dashboard-header {
-      background: rgba(12, 15, 34, 0.98);
-      border-bottom: 2px solid rgba(202, 151, 71, 0.2);
-      padding: 16px 32px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .dashboard-header ul {
-      display: flex;
-      gap: 16px;
-      list-style: none;
-      flex-wrap: wrap;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .nav-btn,
-    .logout-btn {
-      padding: 10px 20px;
-      background: rgba(202, 151, 71, 0.1);
-      color: #cfc6bd;
-      border: 1px solid rgba(202, 151, 71, 0.3);
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-btn:hover,
-    .logout-btn:hover {
-      background: rgba(202, 151, 71, 0.2);
-      border-color: #CA9747;
-      color: #ffffff;
-    }
-
-    .logout-btn:hover {
-      background: rgba(255, 107, 107, 0.1);
-      border-color: #ff6b6b;
-      color: #ff6b6b;
-    }
-
-    /* MAIN CONTENT */
-    .main-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px 32px;
-    }
-
-    /* WELCOME SECTION */
-    .welcome-section {
-      background: linear-gradient(135deg, rgba(202, 151, 71, 0.15) 0%, rgba(202, 151, 71, 0.05) 100%);
-      border: 1px solid rgba(202, 151, 71, 0.2);
-      border-radius: 12px;
-      padding: 40px 32px;
-      margin-bottom: 48px;
-      box-shadow: 0 8px 24px rgba(202, 151, 71, 0.1);
-    }
-
-    .welcome-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .welcome-text h1 {
-      font-size: 32px;
-      color: #ffffff;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .welcome-text p {
-      font-size: 15px;
-      color: #cfc6bd;
-    }
-
-    .welcome-stats {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .stat-badge {
-      background: rgba(12, 15, 34, 0.6);
-      padding: 16px 24px;
-      border-radius: 8px;
-      border: 1px solid rgba(202, 151, 71, 0.2);
-      text-align: center;
-    }
-
-    .stat-badge .stat-number {
-      font-size: 24px;
-      font-weight: 700;
-      color: #CA9747;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .stat-badge .stat-label {
-      font-size: 12px;
-      color: #cfc6bd;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* SECTION TITLE */
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 32px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(202, 151, 71, 0.3);
-      display: inline-block;
-    }
-
-    /* QUICK ACTIONS GRID */
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 64px;
-    }
-
-    .action-grid button {
-      background: rgba(20, 23, 40, 0.8);
-      border: 2px solid rgba(202, 151, 71, 0.2);
-      border-radius: 12px;
-      padding: 32px 24px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .action-grid button:hover {
-      border-color: #CA9747;
-      background: rgba(202, 151, 71, 0.08);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(202, 151, 71, 0.2);
-    }
-
-    .action-grid button:active {
-      transform: translateY(-2px);
-    }
-
-    .action-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .action-grid h4 {
-      font-size: 18px;
-      color: #ffffff;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .action-grid p {
-      font-size: 13px;
-      color: #cfc6bd;
-      line-height: 1.5;
-    }
-
-    /* HOW IT WORKS SECTION */
-    .how-it-works {
-      background: rgba(20, 23, 40, 0.6);
-      border: 1px solid rgba(202, 151, 71, 0.15);
-      border-radius: 12px;
-      padding: 40px 32px;
-      margin-bottom: 48px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .stat-card {
-      background: linear-gradient(135deg, rgba(202, 151, 71, 0.1) 0%, rgba(202, 151, 71, 0.02) 100%);
-      border: 1px solid rgba(202, 151, 71, 0.2);
-      border-radius: 12px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #CA9747 0%, transparent 100%);
-    }
-
-    .stat-card:hover {
-      border-color: #CA9747;
-      background: linear-gradient(135deg, rgba(202, 151, 71, 0.15) 0%, rgba(202, 151, 71, 0.05) 100%);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(202, 151, 71, 0.15);
-    }
-
-    .stat-icon {
-      font-size: 40px;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .stat-card h3 {
-      font-size: 18px;
-      color: #ffffff;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .stat-card span {
-      font-size: 13px;
-      color: #cfc6bd;
-      display: block;
-      line-height: 1.6;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .main-container {
-        padding: 24px 16px;
-      }
-
-      .welcome-section {
-        padding: 24px 16px;
-      }
-
-      .welcome-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .welcome-stats {
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      .welcome-text h1 {
-        font-size: 24px;
-      }
-
-      .dashboard-header {
-        padding: 12px 16px;
-      }
-
-      .dashboard-header ul {
-        gap: 8px;
-      }
-
-      .nav-btn,
-      .logout-btn {
-        padding: 8px 12px;
-        font-size: 12px;
-      }
-
-      .action-grid,
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title {
-        font-size: 20px;
-        margin-bottom: 24px;
-      }
-    }
-  </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION BAR -->
-  <nav class="dashboard-header">
-    <ul>
-      <li>
-        <button type="button" class="nav-btn" data-path="/trucks">
-          📍 Browse Trucks
-        </button>
-      </li>
-      <li>
-        <button type="button" class="nav-btn" data-path="/cart">
-          🛒 View Cart
-        </button>
-      </li>
-      <li>
-        <button type="button" class="nav-btn" data-path="/myOrders">
-          📦 My Orders
-        </button>
-      </li>
-      <li style="margin-left: auto;">
-        <button type="button" id="logoutBtn" class="logout-btn">
-          🚪 Logout
-        </button>
-      </li>
-    </ul>
-  </nav>
+<!-- NAVIGATION BAR -->
+<nav class="dashboard-header">
+  <ul style="display:flex;gap:15px;list-style:none;margin:0;">
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/trucks">
+        Browse Trucks
+      </button>
+    </li>
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/cart">
+        View Cart
+      </button>
+    </li>
+    <li>
+      <button type="button" class="logout-btn nav-btn" data-path="/myOrders">
+        My Orders
+      </button>
+    </li>
+    <li>
+      <button type="button" id="logoutBtn" class="logout-btn">
+        Logout
+      </button>
+    </li>
+  </ul>
+</nav>
+<!-- QUICK ACTIONS -->
+<section>
+  <h2 class="section-title">Quick Actions</h2>
 
-  <div class="main-container">
-    <!-- WELCOME SECTION -->
-    <section class="welcome-section">
-      <div class="welcome-header">
-        <div class="welcome-text">
-          <h1>Welcome, <span id="userName">{{userName}}</span>! 👋</h1>
-          <p>Ready to discover amazing food from local trucks?</p>
-        </div>
-        <div class="welcome-stats">
-          <div class="stat-badge">
-            <span class="stat-number" id="activeOrders">0</span>
-            <span class="stat-label">Active Orders</span>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number" id="totalOrders">0</span>
-            <span class="stat-label">Total Orders</span>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number" id="cartItems">0</span>
-            <span class="stat-label">Items in Cart</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="action-grid">
+    <button id="browseAction">
+      <div class="action-icon">🚚</div>
+      <h4>Browse Trucks</h4>
+      <p>Find available magical food trucks</p>
+    </button>
 
-    <!-- QUICK ACTIONS -->
-    <section>
-      <h2 class="section-title">Quick Actions</h2>
-      <div class="action-grid">
-        <button id="browseAction">
-          <span class="action-icon">🚚</span>
-          <h4>Browse Food Trucks</h4>
-          <p>Explore available trucks and their menus</p>
-        </button>
-        <button id="cartAction">
-          <span class="action-icon">🛒</span>
-          <h4>View Your Cart</h4>
-          <p>Review and manage your selected items</p>
-        </button>
-        <button id="ordersAction">
-          <span class="action-icon">📦</span>
-          <h4>My Orders</h4>
-          <p>Track your order status and history</p>
-        </button>
-      </div>
-    </section>
+    <button id="cartAction">
+      <div class="action-icon">🛒</div>
+      <h4>View Cart</h4>
+      <p>Review selected items</p>
+    </button>
 
-    <!-- HOW IT WORKS -->
-    <section class="how-it-works">
-      <h2 class="section-title">How It Works</h2>
-      <div class="stats">
-        <div class="stat-card">
-          <span class="stat-icon">1️⃣</span>
-          <h3>Browse Trucks</h3>
-          <span>Explore available food trucks in your area and check out their menus</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">2️⃣</span>
-          <h3>Select Your Items</h3>
-          <span>Choose your favorite items and add them to your cart</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">3️⃣</span>
-          <h3>Place Your Order</h3>
-          <span>Complete checkout and track your order in real-time</span>
-        </div>
-      </div>
-    </section>
+    <button id="ordersAction">
+      <div class="action-icon">📜</div>
+      <h4>My Orders</h4>
+      <p>Track order status</p>
+    </button>
   </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <h2 class="section-title">How It Works</h2>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-icon">1️⃣</div>
+      <h3>Browse Trucks</h3>
+      <span>Choose a food truck you like</span>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">2️⃣</div>
+      <h3>Select Items</h3>
+      <span>Add food to your cart</span>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">3️⃣</div>
+      <h3>Place Order</h3>
+      <span>Checkout and track your order</span>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
