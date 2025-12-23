@@ -411,7 +411,7 @@ http://localhost:3001/
 #### 4.browse trucks
 -view trucks 
 -click to view truck menu
-*Screenshot location: `/screenshots/03-browse-trucks.png`*
+*Screenshot location: `/screenshots/browse-trucks.png`*
 
 ![Browse Trucks Page](screenshots/browse-trucks.png)
 #### 5. Truck Menu Page
