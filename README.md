@@ -408,12 +408,14 @@ http://localhost:3001/
 
 *Screenshot location: `/screenshots/03-customer-homepage.png`*
 ![Customer Homepage](screenshots/03-customer-homepage.png)
-#### 4.browse trucks
-- view trucks 
-- click to view truck menu
-*Screenshot location: `/screenshots/browse-trucks.png`*
 
+#### 4. Browse Trucks
+- View trucks
+- Click to view truck menu
+
+*Screenshot location: `/screenshots/browse-trucks.png`*
 ![Browse Trucks Page](screenshots/browse-trucks.png)
+
 #### 5. Truck Menu Page
 - Display all menu items for selected truck
 - Item name, price, description, category
