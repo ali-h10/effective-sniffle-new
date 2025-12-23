@@ -55,7 +55,7 @@ body {
   width: 64px; height: 64px; border-radius: 12px; background: linear-gradient(135deg,#f2a84a,#caa74d);
   display:flex; align-items:center; justify-content:center; font-size:30px; color:#2b1d03; box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
-.truck-card h2 { margin: 0; font-size: 22px; color: #fff; }
+.truck-card h2 { margin: 2px; font-size: 22px; color: #d7cfc6; }
 .truck-card p { margin: 2px 0 0 0; color: #d7cfc6; }
 
 /* Availability area */
@@ -1374,4 +1374,11 @@ button.details {
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 8px;
+}
+.truck-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #2a2a3d;
 }

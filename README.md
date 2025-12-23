@@ -389,6 +389,7 @@ http://localhost:3001/
 - Error messages display
 
 *Screenshot location: `/screenshots/01-login.png`*
+![Login Page](screenshots/01-login.png)
 
 #### 2. Registration Page
 - Full name, email, password input fields
@@ -397,24 +398,31 @@ http://localhost:3001/
 - Error handling
 
 *Screenshot location: `/screenshots/02-register.png`*
+![Registration Page](screenshots/02-register.png)
 
-#### 3. Customer Homepage / Trucks Listing
+#### 3. Customer Homepage 
 - Browse all available food trucks
 - View truck names and logos
 - Click to view truck menu
 - Navigate to cart
 
 *Screenshot location: `/screenshots/03-customer-homepage.png`*
+![Customer Homepage](screenshots/03-customer-homepage.png)
+#### 4.browse trucks
+-view trucks 
+-click to view truck menu
+*Screenshot location: `/screenshots/03-browse-trucks.png`*
 
-#### 4. Truck Menu Page
+![Browse Trucks Page](screenshots/browse-trucks.png)
+#### 5. Truck Menu Page
 - Display all menu items for selected truck
 - Item name, price, description, category
 - Add to cart button with quantity selector
 - View cart summary
 
 *Screenshot location: `/screenshots/04-truck-menu.png`*
-
-#### 5. Shopping Cart Page
+![Truck Menu](screenshots/04-truck-menu.png)
+#### 6. Shopping Cart Page
 - List of items in cart
 - Quantity adjustment controls
 - Item prices and total price
@@ -422,42 +430,42 @@ http://localhost:3001/
 - Checkout button
 
 *Screenshot location: `/screenshots/05-cart.png`*
-
-#### 6. Orders History Page
+![Shopping Cart](screenshots/05-cart.png)
+#### 7. Orders History Page
 - View all past orders
 - Order ID, date, truck name, total price
 - Order status
 - Order details/items
 
 *Screenshot location: `/screenshots/06-my-orders.png`*
-
+![Orders History](screenshots/06-my-orders.png)
 ### Truck Owner Interface
 
-#### 7. Owner Dashboard
+#### 8. Owner Dashboard
 - Welcome message
 - Truck status information
 - Quick action buttons
 - Navigate to menu items, orders, settings
 
 *Screenshot location: `/screenshots/07-owner-dashboard.png`*
-
-#### 8. Add Menu Item Page
+![Owner Dashboard](screenshots/07-owner-dashboard.png)
+#### 9. Add Menu Item Page
 - Form to add new menu items
 - Fields: name, description, price, category
 - Submit button
 - Success/error messages
 
 *Screenshot location: `/screenshots/08-add-menu-item.png`*
-
-#### 9. Truck Orders Page
+![Add Menu Item](screenshots/08-add-menu-item.png)
+#### 10. Truck Orders Page
 - View all incoming customer orders
 - Order ID, customer name, items, status
 - Update order status buttons
 - Order timeline/history
 
 *Screenshot location: `/screenshots/09-truck-orders.png`*
-
-#### 10. Menu Items Management Page
+![Truck Orders](screenshots/09-truck-orders.png)
+#### 11. Menu Items Management Page
 - List all menu items for the truck
 - Item name, price, category, status
 - Edit/delete buttons
@@ -465,7 +473,7 @@ http://localhost:3001/
 - Toggle availability status
 
 *Screenshot location: `/screenshots/10-menu-items.png`*
-
+![Menu Items Management](screenshots/10-menu-items.png)
 ---
 
 ## 8. API Endpoints Summary

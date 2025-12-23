@@ -5,6 +5,14 @@ $(document).ready(function () {
     url: "/api/v1/trucks/view",   // existing API
     success: function (trucks) {
       $("#trucksContainer").empty();
+      if (!trucks || trucks.length === 0) {
+  $("#trucksContainer").html(
+    `<p style="text-align:center;color:#aaa;margin-top:40px;">
+      No trucks are available
+     </p>`
+  );
+  return; // 🔥 stop here
+}
 
       trucks.forEach(truck => {
         const isAvailable = truck.orderStatus === "available";
@@ -14,7 +22,9 @@ $(document).ready(function () {
             
 
             <h3 style="margin-top:12px;">${truck.truckName}</h3>
-
+            <div class="truck-logo">
+              <img src="/images/truck-placeholder.png" alt="Truck Logo">
+            </div>
             <span style="
               margin:10px auto;
               padding:4px 12px;
