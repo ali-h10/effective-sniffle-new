@@ -409,8 +409,8 @@ http://localhost:3001/
 *Screenshot location: `/screenshots/03-customer-homepage.png`*
 ![Customer Homepage](screenshots/03-customer-homepage.png)
 #### 4.browse trucks
--view trucks 
--click to view truck menu
+- view trucks 
+- click to view truck menu
 *Screenshot location: `/screenshots/browse-trucks.png`*
 
 ![Browse Trucks Page](screenshots/browse-trucks.png)
